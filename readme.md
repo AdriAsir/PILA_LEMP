@@ -49,7 +49,7 @@ Ahora, modificaremos la directiva `listen` del archivo `/etc/php/7.4/fpm/pool.d/
 
 ![](capturas/Captura6.PNG)
 
-Por último, voleremos a configurar el archivo `` para que indicarle porue puerto deberá escuchar las peticiones, descomentando la siguiente sección:
+Por último, voleremos a configurar el archivo `/etc/nginx/sites-avalable/default` para que indicarle porue puerto deberá escuchar las peticiones, descomentando la siguiente sección y lo moveremos a `/etc/nginx/sites-avalable/available` eliminando antes el archivo que existia en dicha ruta:
 
 ![](capturas/Captura7.PNG)
 

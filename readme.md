@@ -40,10 +40,12 @@ Dentro de ese mismo archivo, descomentaremos las siguientes líneas:
 
 ![](capturas/Captura4.PNG)
 
-Una vez hecho todo eso, volveremos a */var*www*sitioweb/* y exportaremos el repositorio GitHub dado en la práctica anterior para facilitar el trabajo con el siguiente comando: `sudo git clone https://github.com/josejuansanchez/iaw-practica-lamp.git` y moveremos el contenido en `iaw-preactia-lamp/src/* a *sitioweb`.
+Una vez hecho todo eso, volveremos a `/var/www/sitioweb/` y exportaremos el repositorio GitHub dado en la práctica anterior para facilitar el trabajo con el siguiente comando: `sudo git clone https://github.com/josejuansanchez/iaw-practica-lamp.git` y moveremos el contenido en `iaw-preactia-lamp/src/* a *sitioweb`.
 Dentro de config.php modificaremos la dirección IP de "@localhost" por la IP de nuestro servidor Web.
 
-![Imagen de la práctica anterior debido a que me salté este paso en un inicio](capturas/Capturaf.PNG)
+![](capturas/Capturaf.PNG)
+>Imagen de la práctica anterior debido a que me salté este paso en un inicio.
+
 
 Ahora, modificaremos la directiva `listen` del archivo `/etc/php/7.4/fpm/pool.d/www.conf` con `sudo nano /etc/php/7.4/fpm/pool.d/www.conf` y pondremos `listen = 127.0.0.1:9000` y reiniciaremos el servicio PHP con `sudo systemctl restart php7.4-fpm`
 
@@ -57,6 +59,36 @@ Finalizaremos con un reinicio del servicio Nginx `sudo systemctl restart nginx` 
 
 ![](capturas/Captura8.PNG)
 
+
+# Configurador Servidor MySQL
+
+En el servidor Mysql, importaremos desde el repositorio Github dado en la práctica, una base de datos y la configuraremos para nuestra red. 
+
+![](capturas/creacion.PNG)
+
+En el archivo `mysql.conf`, cambiaremos la linea de "bind-address 172.0.0.1" por nuestra dirección IP del servidor Mysql.
+
+![](capturas/Captura9.PNG)
+
+Al haber instalado por aprovisionamiento MySQL, no tendremos contraseña de root. Para ello, pondremos el siguiente comando que nos permitirá configurar dichos parámetros sin tener que volver a instalar MySQL `sudo mysql_secure_installation`.
+
+![](capturas/Captura10.PNG)
+
+Antes de importar la base de datos a nuestro servidor, eliminaremos las tres ultimas líneas del archivo `iaw-practica-lamp/db/database.sql` para evitar posibles errores al crear un usuario.
+
+![](capturas/Captura12.PNG)
+
+Para finalizar los ajustes de nuestra base de datos, crearemos un usuario al cual le daremos permisos totales a la BD importada previamente.
+
+![](capturas/Captura11.PNG)
+
+Una vez completado el paso anterior, importaremos la base de datos a muestro MySQL con el siguiente comando `mysql -u root -p < iaw-practica-lamp/db/database.sql`
+
+![](capturas/Captura13.PNG)
+
+Una vez hecho esto, podemos eliminar el contenido de iaw-practica-lamp.
+
+![](capturas/Captura14.PNG)
 
 # Configurador máquina Balanceador
 

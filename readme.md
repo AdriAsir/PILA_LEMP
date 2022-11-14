@@ -64,7 +64,7 @@ Finalizaremos con un reinicio del servicio Nginx `sudo systemctl restart nginx` 
 
 En el servidor Mysql, importaremos desde el repositorio Github dado en la práctica, una base de datos y la configuraremos para nuestra red. 
 
-![](capturas/creacion.PNG)
+![](capturas/creacion.png)
 
 En el archivo `mysql.conf`, cambiaremos la linea de "bind-address 172.0.0.1" por nuestra dirección IP del servidor Mysql.
 
